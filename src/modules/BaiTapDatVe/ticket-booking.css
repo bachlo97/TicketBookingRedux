@@ -23,6 +23,16 @@ h1 {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+
+h2 {
+    color: #ff9800;
+    text-transform: capitalize;
+    margin-bottom: 25px;
+    font-size: 1em;
+    letter-spacing: 0.5px;
+    line-height: 1.7;
+}
+
 footer p {
     color:white;
     font-size: 15px;
@@ -52,4 +62,79 @@ footer p a{
     box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
+}
+
+.seat-legend{
+    margin: 2em 0;
+    list-style: none;
+    padding: 0px;
+}
+
+.smallBox{
+    text-align: left;
+    display: inline-block;
+    margin-right: 1em;
+    color: white;
+}
+
+.smallBox::before{
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.greenBox::before{
+    content: "";
+    background-color: green;
+}
+
+.redBox::before {
+    content: "";
+    background: Red;
+}
+
+.emptyBox::before {
+    content: "";
+    box-shadow: inset 0px 2px 3px 0px rgb(255, 152, 0), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+    background-color: white;
+}
+
+.mr_agilemain {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+label{
+    font-size: 1em;
+    color: white;
+    font-weight: 600;
+}
+
+label span{
+    color: red;
+}
+input[type='text'],input[type='number']{
+    padding: 1em;
+    width: 100%;
+    background: transparent;
+    border: 1px solid #888686;
+    font-size: 1em;
+    color: white;
+    border-radius: 0;
+}
+
+input[type='text']:focus,input[type='number']:focus{
+    background: transparent;
+    border-radius: 5px;
+    border-color: white;
+    box-shadow: none;
+}
+
+#notification span{
+    margin-bottom: 0px;
+    background: #ff9800;
+    letter-spacing: 1px;
+    font-weight: normal;
 }
