@@ -3,6 +3,7 @@ import "./ticket-booking.css";
 import InputForm from "./components/input-form";
 import TableForm from "./components/table-form";
 import SeatsTable from "./components/seats-table";
+
 function TicketBooking() {
   return (
     <div className="container">

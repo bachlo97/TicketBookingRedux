@@ -1,22 +1,29 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 function TableForm() {
+    const accountsList = useSelector(state => state.ticketBookingReducer.accountsList)
+    console.log(accountsList)
     return (
         <>
-            <table className="table table-bordered table-hover" style={{width:'500px'}}>
+            <table className="table table-bordered table-hover" style={{ width: '500px' }}>
                 <thead className='table-dark'>
                     <tr>
-                        <th scope="col" style={{width:"30%"}}>Name</th>
-                        <th scope="col" style={{width:"30%"}}>Number of Seats</th>
-                        <th scope="col" style={{width:"30%"}}>Seats</th>
+                        <th scope="col" style={{ width: "30%" }}>Name</th>
+                        <th scope="col" style={{ width: "30%" }}>Number of Seats</th>
+                        <th scope="col" style={{ width: "30%" }}>Seats</th>
                     </tr>
                 </thead>
                 <tbody className='align-middle'>
-                    <tr>
-                        <th scope="row" className='text-start'>Pham The Cuong</th>
-                        <td>10</td>
-                        <td>A1, A2, A3, A4, A5, A6</td>
-                    </tr>
+                    {accountsList.map((user, index) => {
+                        return (
+                            <tr key={index}>
+                                <th scope="row" className='text-start'>{user.name}</th>
+                                <td>{user.numSeats}</td>
+                                <td>{user.seatSeleted.join(', ')}</td>
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </table>
 

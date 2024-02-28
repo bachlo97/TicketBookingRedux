@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
 }
@@ -119,8 +120,13 @@ input[type="number"] {
   background: transparent;
   border: 1px solid #888686;
   font-size: 1em;
-  color: white;
+  color: #fff;
   border-radius: 0;
+}
+
+/*? reset bootstrap style */
+.form-control:focus {
+  color: white;
 }
 
 input[type="text"]:focus,
@@ -185,6 +191,10 @@ input[type=checkbox]:before {
   box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
   background-color: white;
   margin-bottom: 10px;
+}
+
+.seat-selected::before{
+  background-color: red !important;
 }
  
 /**--responsive--**/

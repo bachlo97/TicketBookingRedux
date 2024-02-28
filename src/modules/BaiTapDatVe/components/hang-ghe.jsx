@@ -1,7 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
+
+
+
 
 function HangGhe(props) {
   const { hangGhe } = props;
+  const selectedList = useSelector(state=>state.ticketBookingReducer.selectedList)
   console.log(hangGhe);
   return (
     <tr>
@@ -16,7 +21,9 @@ function HangGhe(props) {
             <td key={index}>
               <input
                 type="checkbox"
-                className="seats"
+                className={
+                  selectedList.find(item => item === seat.soGhe) ? 'seat-selected' : ""
+                }
                 defaultValue={seat.soGhe}
                 disabled={seat.daDat}
               />
