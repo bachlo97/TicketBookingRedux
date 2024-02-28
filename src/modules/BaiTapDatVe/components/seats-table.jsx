@@ -1,16 +1,23 @@
-import React from 'react'
-import danhSachGheData from '../../../data/danhSachGhe.json'
-console.log(danhSachGheData)
+import React from "react";
+import danhSachGheData from "../../../data/danhSachGhe.json";
+import HangGhe from "./hang-ghe";
+console.log(danhSachGheData);
 function SeatsTable() {
   return (
     <>
       <table>
         <tbody>
-            {danhSachGheData.map()}
+          {danhSachGheData.map((hangGhe, index) => {
+            if (!hangGhe.hang && index !== 0) {
+              return <tr key={index} className="seatVGap"></tr>;
+            } else {
+              return <HangGhe hangGhe={hangGhe} key={index} />;
+            }
+          })}
         </tbody>
       </table>
     </>
-  )
+  );
 }
 
-export default SeatsTable
+export default SeatsTable;
