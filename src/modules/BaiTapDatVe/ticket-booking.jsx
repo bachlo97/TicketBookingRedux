@@ -3,8 +3,10 @@ import "./ticket-booking.css";
 import InputForm from "./components/input-form";
 import TableForm from "./components/table-form";
 import SeatsTable from "./components/seats-table";
+import { useSelector } from "react-redux";
 
 function TicketBooking() {
+  const isFilled = useSelector(state => state.ticketBookingReducer.isFilled)
   return (
     <div className="container">
       <h1>Movie Seat Selection</h1>
@@ -26,7 +28,7 @@ function TicketBooking() {
           style={{ overflowX: "auto",display:'flex',flexDirection:'column',width:'100%'}}
         >
           <p id="notification" style={{ width: "100%" }}>
-            <span>Please Select your Seats NOW!</span>
+            {isFilled ? <span>Please Select your Seats NOW!</span> : ''}
           </p>
 
           <SeatsTable />

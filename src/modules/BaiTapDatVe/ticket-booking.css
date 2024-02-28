@@ -196,6 +196,10 @@ input[type=checkbox]:before {
 .seat-selected::before{
   background-color: red !important;
 }
+
+.seat-selecting::before{
+  background-color: green !important;
+}
  
 /**--responsive--**/
 

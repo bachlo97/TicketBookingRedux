@@ -19,8 +19,8 @@ function TableForm() {
                         return (
                             <tr key={index}>
                                 <th scope="row" className='text-start'>{user.name}</th>
-                                <td>{user.numSeats}</td>
-                                <td>{user.seatSeleted.join(', ')}</td>
+                                <td>{user.numSeat}</td>
+                                <td>{user.seatSeleted ? user.seatSeleted.join(', ') : ''}</td>
                             </tr>
                         )
                     })}
