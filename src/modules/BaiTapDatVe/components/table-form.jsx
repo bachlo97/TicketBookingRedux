@@ -5,8 +5,8 @@ function TableForm() {
     const accountsList = useSelector(state => state.ticketBookingReducer.accountsList)
     return (
         <>
-            <table className="table table-bordered table-hover" style={{ width: '500px' }}>
-                <thead className='table-dark'>
+            <table className="table table-bordered table-hover" style={{ width: '500px',position:'relative'}}>
+                <thead className='table-dark' style={{position:'sticky',top:0}}>
                     <tr>
                         <th scope="col" style={{ width: "30%" }}>Name</th>
                         <th scope="col" style={{ width: "30%" }}>Number of Seats</th>

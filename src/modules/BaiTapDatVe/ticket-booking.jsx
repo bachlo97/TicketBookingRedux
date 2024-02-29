@@ -48,9 +48,7 @@ function TicketBooking() {
               }
               if(+numSeat !== lenSelectingList){
                 let soGhe = +numSeat - lenSelectingList
-                console.log({numSeat})
-                console.log({lenSelectingList})
-                alert(`Vui lòng chọn đủ số ghê .Hãy chọn thêm ${soGhe} ghế`)
+                alert(`Vui lòng chọn đủ số ghế đã đăng ký. Bạn hãy chọn thêm ${soGhe} ghế nhé 😘`)
                 return
               }
               const action = renderTable()
@@ -63,7 +61,7 @@ function TicketBooking() {
 
         <div
           className="displayerBoxes text-center"
-          style={{ overflowX: "auto", margin: "10px auto" }}
+          style={{ overflowX: "auto", margin: "10px auto" ,overflowY:'auto',height:'500px'}}
         >
           <TableForm />
         </div>

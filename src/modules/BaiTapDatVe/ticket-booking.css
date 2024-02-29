@@ -9,6 +9,10 @@ body {
   background-attachment: fixed;
 }
 
+.table{
+  margin-bottom: 0;
+}
+
 h1 {
   font-size: 3.5vw;
   text-transform: uppercase;

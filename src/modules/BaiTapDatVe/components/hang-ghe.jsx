@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addSelectingSeat,
   removeSelectingSeat,
-  ticketBookingReducer,
 } from "../../../redux/ticketBooking.slice";
 
 function HangGhe(props) {
@@ -49,7 +48,6 @@ function HangGhe(props) {
                     (item) => item === seat.soGhe
                   );
 
-
                   if (+user.numSeat === selectingList.length) {
                     if (indexSeat !== -1) {
                       e.target.className = "";
@@ -61,8 +59,7 @@ function HangGhe(props) {
                       e.target.className = "seat-selecting";
                       const action = addSelectingSeat(seat.soGhe);
                       dispatch(action);
-                    } 
-                    else {
+                    } else {
                       e.target.className = "";
                       const action = removeSelectingSeat(indexSeat);
                       dispatch(action);

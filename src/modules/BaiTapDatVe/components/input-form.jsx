@@ -1,23 +1,41 @@
-import React, { useRef } from "react";
+import React, {useRef} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TOTAL_SEATS, handleInput } from "../const";
-import { current } from "@reduxjs/toolkit";
-import { getUserInfo } from "../../../redux/ticketBooking.slice";
+import { getUserInfo, onChangeInput } from "../../../redux/ticketBooking.slice";
 function InputForm() {
   const name = useRef();
   const numSeat = useRef();
-  const selectedList = useSelector(state => state.ticketBookingReducer.selectedList)
+  const nameInput = useSelector(
+    (state) => state.ticketBookingReducer.nameInput
+  );
+  const seatInput = useSelector(
+    (state) => state.ticketBookingReducer.seatInput
+  );
+  const selectedList = useSelector(
+    (state) => state.ticketBookingReducer.selectedList
+  );
+
+
+  const isFilled = useSelector((state) => state.ticketBookingReducer.isFilled);
   const dispatch = useDispatch();
+
   return (
     <div style={{ width: "100%" }}>
       <h2>Fill The Required Details Below And Select Your Seats</h2>
       <form
         className="row"
         onSubmit={(e) => {
-          isFilled
           e.preventDefault();
-          num = handleInput(name.current.value, numSeat.current.value,selectedList.length)
-          if(!num){
+          if(selectedList.length === TOTAL_SEATS){
+            alert('Rạp không còn ghế trống. Hẹn quý khách lần sau.Tks so much 🥰')
+            return;
+          }
+          const num = handleInput(
+            name.current.value,
+            numSeat.current.value,
+            selectedList.length
+          );
+          if (!num) {
             return;
           }
           const action = getUserInfo({
@@ -31,7 +49,19 @@ function InputForm() {
           <label htmlFor="Name" className="form-label">
             Name<span> *</span>
           </label>
-          <input type="text" ref={name} className="form-control" id="name" />
+          <input
+            type="text"
+            ref={name}
+            className="form-control"
+            value={nameInput}
+            onChange={(e) => {
+              const action = onChangeInput({
+                nameInput: e.target.value,
+              });
+              dispatch(action);
+            }}
+            readOnly = {isFilled}
+          />
         </div>
         <div className="col-md-4 mb-4">
           <label htmlFor="num-ticket" className="form-label">
@@ -41,11 +71,18 @@ function InputForm() {
             type="number"
             ref={numSeat}
             className="form-control"
-            id="num-ticket"
+            value={seatInput}
+            onChange={(e) => {
+              const action = onChangeInput({
+                seatInput: e.target.value,
+              });
+              dispatch(action);
+            }}
+            readOnly = {isFilled}
           />
         </div>
         <div>
-          <button className="btn btn-secondary mt-3">Start Selecting</button>
+          <button disabled={isFilled} className="btn btn-secondary mt-3">Start Selecting</button>
         </div>
       </form>
     </div>
