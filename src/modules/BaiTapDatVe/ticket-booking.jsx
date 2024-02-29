@@ -61,7 +61,7 @@ function TicketBooking() {
 
         <div
           className="displayerBoxes text-center"
-          style={{ overflowX: "auto", margin: "10px auto" ,overflowY:'auto',height:'500px'}}
+          style={{ overflowX: "auto", margin: "10px auto" ,overflowY:'auto',height:'300px'}}
         >
           <TableForm />
         </div>
