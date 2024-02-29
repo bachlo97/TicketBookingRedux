@@ -1,5 +1,5 @@
 export const TOTAL_SEATS = 120;
-const max_num = 10;
+const max_num = 121;
 export const handleInput = (name, num,len) => {
   if (!name || !num) {
     alert("Please Enter your Name and Number of Seats");
@@ -13,10 +13,10 @@ export const handleInput = (name, num,len) => {
   const remain = TOTAL_SEATS - len
   if(num > remain){
     if(confirm(`Chỉ còn ${remain} ghế trống. Bạn có muốn đặt ${remain} ghế này không?`)){
-        return 
+        return remain
     }
   }
-  return 1;
+  return num;
 };
 
 export const clearObject = (obj) => {

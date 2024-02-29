@@ -17,7 +17,6 @@ function HangGhe(props) {
   );
   const user = useSelector((state) => state.ticketBookingReducer.user);
   const dispatch = useDispatch();
-  console.log(hangGhe);
   return (
     <tr>
       <td>{hangGhe.hang}</td>

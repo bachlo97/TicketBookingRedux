@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { TOTAL_SEATS, handleInput } from "../const";
 import { current } from "@reduxjs/toolkit";
 import { getUserInfo } from "../../../redux/ticketBooking.slice";
 function InputForm() {
   const name = useRef();
   const numSeat = useRef();
-
+  const selectedList = useSelector(state => state.ticketBookingReducer.selectedList)
   const dispatch = useDispatch();
   return (
     <div style={{ width: "100%" }}>
@@ -14,13 +14,15 @@ function InputForm() {
       <form
         className="row"
         onSubmit={(e) => {
+          isFilled
           e.preventDefault();
-          if (!handleInput(name.current.value, numSeat.current.value)) {
+          num = handleInput(name.current.value, numSeat.current.value,selectedList.length)
+          if(!num){
             return;
           }
           const action = getUserInfo({
             name: name.current.value,
-            numSeat: numSeat.current.value,
+            numSeat: num,
           });
           dispatch(action);
         }}

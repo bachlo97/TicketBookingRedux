@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 
 function TableForm() {
     const accountsList = useSelector(state => state.ticketBookingReducer.accountsList)
-    console.log(accountsList)
     return (
         <>
             <table className="table table-bordered table-hover" style={{ width: '500px' }}>

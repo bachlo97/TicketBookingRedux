@@ -3,10 +3,14 @@ import "./ticket-booking.css";
 import InputForm from "./components/input-form";
 import TableForm from "./components/table-form";
 import SeatsTable from "./components/seats-table";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { renderTable } from "../../redux/ticketBooking.slice";
 
 function TicketBooking() {
   const isFilled = useSelector(state => state.ticketBookingReducer.isFilled)
+  const numSeat = useSelector(state => state.ticketBookingReducer.user.numSeat)
+  const lenSelectingList = useSelector(state => state.ticketBookingReducer.selectingList).length
+  const dispatch = useDispatch()
   return (
     <div className="container">
       <h1>Movie Seat Selection</h1>
@@ -25,7 +29,7 @@ function TicketBooking() {
 
         <div
           className="seatStructure text-center"
-          style={{ overflowX: "auto",display:'flex',flexDirection:'column',width:'100%'}}
+          style={{ overflowX: "auto", display: 'flex', flexDirection: 'column', width: '100%' }}
         >
           <p id="notification" style={{ width: "100%" }}>
             {isFilled ? <span>Please Select your Seats NOW!</span> : ''}
@@ -38,7 +42,20 @@ function TicketBooking() {
           </div>
 
           <div>
-            <button className="btn btn-secondary" style={{ margin: "15px" }}>
+            <button className="btn btn-secondary" style={{ margin: "15px" }} onClick={()=>{
+              if (!isFilled){
+                return;
+              }
+              if(+numSeat !== lenSelectingList){
+                let soGhe = +numSeat - lenSelectingList
+                console.log({numSeat})
+                console.log({lenSelectingList})
+                alert(`Vui lòng chọn đủ số ghê .Hãy chọn thêm ${soGhe} ghế`)
+                return
+              }
+              const action = renderTable()
+              dispatch(action)
+            }}>
               Confirm Selection
             </button>
           </div>

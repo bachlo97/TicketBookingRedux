@@ -1,7 +1,6 @@
 import React from "react";
 import danhSachGheData from "../../../data/danhSachGhe.json";
 import HangGhe from "./hang-ghe";
-console.log(danhSachGheData);
 
 function SeatsTable() {
   return (

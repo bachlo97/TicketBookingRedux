@@ -24,10 +24,24 @@ const ticketBookingSlice = createSlice({
     },
     removeSelectingSeat: (state,action) =>{
       state.selectingList.splice(action.payload,1)
+    },
+    renderTable:(state) =>{
+      //Thêm mảng ghế đã chọn vào user:
+      state.user.seatSeleted = state.selectingList
+
+      //Thêm đối tượng user vào mảng accountsList:
+      state.accountsList.push(state.user)
+
+      //Thêm mảng ghế đã chọ vào mảng ghế đã được đặt:
+      state.selectedList = [...state.selectedList,...state.selectingList]
+
+      //Reset các giá trị
+      state.isFilled = false
+      
     }
   }
 });
 
-export const {getUserInfo,addSelectingSeat,removeSelectingSeat} = ticketBookingSlice.actions
+export const {getUserInfo,addSelectingSeat,removeSelectingSeat,renderTable} = ticketBookingSlice.actions
 
 export const ticketBookingReducer =  ticketBookingSlice.reducer
