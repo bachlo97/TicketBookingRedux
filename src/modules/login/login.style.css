@@ -1,0 +1,90 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: url(https://images.unsplash.com/photo-1549615567-101937a79124?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+body::after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    bottom: 0;
+    right: 0;
+    content: '';
+    background-color: #00000026 ;
+}
+
+section{
+    position: relative;
+    max-width: 400px;
+    background-color: transparent;
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 3rem;
+}
+
+h1{
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+}
+
+.inputbox{
+    position: relative;
+    margin: 30px 0;
+    max-width: 310px;
+    border-bottom: 2px solid white;
+}
+
+.inputbox label{
+    position: absolute;
+    top:50%;
+    left:5px;
+    transform: translateY(-30%);
+    color: white;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all .5s ease-in-out;
+}
+
+input:focus ~ label,
+input:valid ~ label{
+    top:-1px;
+    left: 0px;
+    font-size: .75rem;
+}
+
+.inputbox input {
+    width: 100%;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 35px 0 5px;
+    color: white;
+}
+
+/* xóa bỏ tăng giảm của input number */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
